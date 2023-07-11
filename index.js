@@ -10,15 +10,15 @@ const app = express();
 const port = process.env.PORT || 3434;
 
 // Connect to MongoDB
-// mongoose.connect(process.env.MONGOURL, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
-// const db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-// db.once('open', () => {
-//   console.log('Connected to MongoDB');
-// });
+mongoose.connect(process.env.MONGOURL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
 
 // Middleware
 app.use(cors());
@@ -35,5 +35,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Server listening at port ${port}`);
 });
-
-module.exports = app;
