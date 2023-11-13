@@ -13,9 +13,10 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET specific task
 router.get('/:id', async (req, res) => {
   try {
-    const { id } = req.params
+    const { id } = req.params 
     const task = await Task.findById(id)
     res.json(task)
   } catch (error) {
